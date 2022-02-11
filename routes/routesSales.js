@@ -18,7 +18,8 @@ router.post("/addSale", async (req, res, next) => {
   const vehicleName = req.body.vehicleName;
   const vehicle = await Vehicle.find({ name: vehicleName });
   const id = vehicle[0]._id;
-  const sale = new Sales({
+  console.log(id);
+  const sales = new Sales({
     name: req.body.name,
     address: req.body.address,
     mobile: req.body.mobile,
@@ -26,7 +27,7 @@ router.post("/addSale", async (req, res, next) => {
   });
 
   try {
-    const sale = await sale.save();
+    const sale = await sales.save();
     res.json(sale).status(200);
   } catch (error) {
     console.log(error);
