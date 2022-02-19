@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const conn = mongoose.connect(
-  process.env.azDBURI,
+  process.env.azDBURL,
   () => {
     console.log("Database connected ");
     return true;
