@@ -14,8 +14,8 @@ app.use(
   })
 );
 
-app.use("/test/api", vehicles);
-app.use("/test/api", sales);
+app.use("/", vehicles);
+app.use("/api", sales);
 
 app.listen(port, () => {
   console.log(`Server up on port ${port}`);

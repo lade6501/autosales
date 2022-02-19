@@ -6,9 +6,10 @@ const Vehicle = require("../db/models/vehicle");
 //api provides all the sales data related to vehicles
 router.get("/sales", async (req, res, next) => {
   try {
-    const sales = Sales.find();
+    const sales = await Sales.find();
     res.json(sales).status(200);
   } catch (error) {
+    console.log(error);
     res.json({ message: error }).status(500);
   }
 });
@@ -19,7 +20,7 @@ router.post("/addSale", async (req, res, next) => {
   const vehicle = await Vehicle.find({ name: vehicleName });
   const id = vehicle[0]._id;
   console.log(id);
-  const sales = new Sales({
+  const salesObj = new Sales({
     name: req.body.name,
     address: req.body.address,
     mobile: req.body.mobile,
@@ -27,7 +28,7 @@ router.post("/addSale", async (req, res, next) => {
   });
 
   try {
-    const sale = await sales.save();
+    const sale = await salesObj.save();
     res.json(sale).status(200);
   } catch (error) {
     console.log(error);
