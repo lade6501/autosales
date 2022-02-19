@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Vehicle = require("../db/models/vehicle");
 
+router.get('/veh',(req,res)=>{
+  res.send('Hello Azure').status(200);
+})
 //api to get single vehicle data
 router.get("/vehicle", async (req, res, next) => {
   try {
