@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const conn = mongoose.connect(
-  "mongodb://127.0.0.1:27017/automobiles",
+  process.env.DBURI,
   () => {
     console.log("Database connected ");
     return true;
